@@ -1,0 +1,43 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\theol\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-navigation
+
+PATH: 
+  C:\PortablePrograms\cmder\bin;C:\PortablePrograms\cmder\vendor\bin;C:\PortablePrograms\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\PortablePrograms\cmder\vendor\conemu-maximus5;C:\PortablePrograms\cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Users\theol\AppData\Local\Microsoft\WindowsApps;C:\Users\theol\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\theol\AppData\Local\hyper\app-2.1.1\resources\bin;C:\PortablePrograms\php-7.3.1-nts-Win32-VC15-x64;C:\Users\theol\AppData\Roaming\Composer\vendor\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\theol\AppData\Roaming\npm;C:\Users\theol\AppData\Local\Programs\Python\Python37;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\PortablePrograms\cmder
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  10.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\theol\Documents\Dev\react-native-boilerplate\node_modules\.cache\@babel\register'
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "^32.0.0",
+      "react": "16.5.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "^5.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
