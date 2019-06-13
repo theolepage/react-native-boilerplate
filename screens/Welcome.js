@@ -1,12 +1,26 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+
+import { Block, Text, Button } from '../components'
 
 export default class Welcome extends React.Component {
   render() {
-      return (
-          <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-              <Text>WELCOME</Text>
-          </View>
-      );
+	const { navigation } = this.props
+	
+	return (
+		<Block margin={[10, 30]}>
+			<Block>
+				<Text h1>My app.</Text>
+				<Text h2>A short description.</Text>
+			</Block>
+			<Block margin={[300, 0]}>
+				<Button primary onPress={() => navigation.navigate('Login')}>
+					<Text white center>Login</Text>
+				</Button>
+				<Button onPress={() => {}}>
+					<Text center>Signup</Text>
+				</Button>
+			</Block>
+		</Block>
+	);
   }
 }

@@ -4,17 +4,19 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'
 
 import Welcome from './screens/Welcome'
 import Login from './screens/Login'
+import Browse from './screens/Browse'
 
 import { theme } from './constants'
 
 const AppNavigator = createStackNavigator({
     Welcome,
-    Login
+    Login,
+    Browse
 },
 {
     defaultNavigationOptions: {
         headerStyle: {
-          height: theme.sizes.base * 4,
+          height: theme.sizes.base * 3,
           backgroundColor: theme.colors.white,
           borderBottomColor: "transparent",
           elevation: 0,
@@ -23,8 +25,8 @@ const AppNavigator = createStackNavigator({
         headerBackTitle: null,
         headerLeftContainerStyle: {
           alignItems: 'center',
-          marginLeft: theme.sizes.base * 2,
-          paddingRight: theme.sizes.base,
+          marginLeft: 15,
+          paddingRight: 0,
         },
         headerRightContainerStyle: {
           alignItems: 'center',
