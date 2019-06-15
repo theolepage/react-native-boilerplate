@@ -5,32 +5,36 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'
 import Welcome from './screens/Welcome'
 import Login from './screens/Login'
 import Browse from './screens/Browse'
+import Profile from './screens/Profile'
 
 import { theme } from './constants'
 
 const AppNavigator = createStackNavigator({
     Welcome,
     Login,
-    Browse
+    Browse,
+    Profile
 },
 {
     defaultNavigationOptions: {
         headerStyle: {
-          height: theme.sizes.base * 3,
           backgroundColor: theme.colors.white,
-          borderBottomColor: "transparent",
+          borderBottomColor: 'transparent',
           elevation: 0,
+          marginTop: 30,
+          marginLeft: 15
         },
         headerBackImage: <Image source={require('./assets/icons/back.png')} />,
-        headerBackTitle: null,
+        headerTitleStyle: {
+            fontSize: 26,
+            fontWeight: "bold",
+            color: '#1e1e1e'
+        },
         headerLeftContainerStyle: {
-          alignItems: 'center',
-          marginLeft: 15,
-          paddingRight: 0,
+            marginLeft: 30,
         },
         headerRightContainerStyle: {
-          alignItems: 'center',
-          paddingRight: theme.sizes.base,
+            marginRight: 30,
         },
     }
 })

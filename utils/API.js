@@ -22,6 +22,7 @@ export default class API {
                 return data
             })
           .catch(error => {
+              console.log('loooooool')
                 throw error
             })
     }

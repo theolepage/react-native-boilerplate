@@ -1,11 +1,11 @@
 export const index = () => {
-    return (dispatch, state, { api }) => {
+    return async (dispatch, state, { api }) => {
 
-        api.get('/api/courses').then(courses => {
-            return dispatch({
-                type: 'COURSES_INDEX',
-                courses
-            })
+        let courses = await api.get('/api/courses')
+        
+        return dispatch({
+            type: 'COURSES_INDEX',
+            courses
         })
 
     }

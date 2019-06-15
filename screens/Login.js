@@ -6,7 +6,12 @@ import { Block, Text, Button, Input } from '../components'
 
 import { login } from '../actions/authActions'
 
-class Login extends React.Component {
+class Login extends React.Component {  
+    static navigationOptions = {
+        title: 'Login',
+        headerLeft: null
+    }
+    
     state = {
         username: "ghickle@example.com",
         password: "testtest",
@@ -19,17 +24,12 @@ class Login extends React.Component {
     }
 
     attemptLogin() {
-        const {username, password} = this.state
-        this.props.login({username, password})
+        this.props.login(this.state.username, this.state.password)
     }
 
     render() {
         return (
-            <Block margin={[10, 30]}>
-                <Block margin={[0, 0, 50, 0]}>
-                    <Text h1>Login</Text>
-                </Block>
-                
+            <Block margin={[50, 30]}>
                 <Input
                     label="Username"
                     defaultValue={this.state.username}

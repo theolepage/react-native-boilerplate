@@ -6,31 +6,30 @@ export const logout = () => {
     }
 }
 
-export const login = (user) => {
-    return (dispatch, state, { api }) => {
+export const login = (username, password) => {
+    return async (dispatch, state, { api }) => {
 
-        api.post('/oauth/token', {
+        let data = await api.post('/oauth/token', {
             'grant_type': 'password',
             'client_id': '2',
             'client_secret': api.client_secret,
-            'username': user.username,
-            'password': user.password
-        }).then(data => {
-            if (!data.error) {
-                api.setToken(data.access_token)
-                api.get('/api/user').then(user => {
-                    return dispatch({
-                        type: 'AUTH_LOGIN',
-                        token: data.access_token,
-                        user: user
-                    })
-                })
-            } else {
-                return dispatch({
-                    type: 'AUTH_ERROR',
-                    message: data.message
-                })
-            }
+            'username': username,
+            'password': password
+        })
+
+        if (data.error) {
+            return dispatch({
+                type: 'AUTH_ERROR',
+                message: data.message
+            })
+        }
+
+        api.setToken(data.access_token)
+        let user = await api.get('/api/user')
+        return dispatch({
+            type: 'AUTH_LOGIN',
+            token: data.access_token,
+            user: user
         })
 
     }

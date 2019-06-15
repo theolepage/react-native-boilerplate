@@ -4,5 +4,17 @@ My React Native boilerplate to start making simple mobile apps.
 
 ## To-Do
 
-- Connect to API (redux, auth, fetch data)
-- Implement more screens and improve UI components)
+### Courses
+
+- Implement the listing
+- Implement the course details screen
+
+### Users
+
+- Remember me (persist user token)
+- Sign up
+- Forgot password
+
+### Organization
+
+- Improve structure of the project

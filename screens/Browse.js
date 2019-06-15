@@ -2,44 +2,45 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { Image, TouchableOpacity } from 'react-native'
 import { Block, Text, Button } from '../components'
 
-import { logout } from '../actions/authActions'
 import { index } from '../actions/courseActions'
 
 class Browse extends React.Component {
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Browse',
+        headerLeft: null,
+        headerRight: (
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                <Image style={{width: 40, height: 40, borderRadius: 100}} source={{uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'}} />
+            </TouchableOpacity>
+        )
+    })
+    
     componentDidMount() {
         // Load courses
         this.props.index()
     }
 
     componentDidUpdate() {
-        // Logout
-        if (this.props.token === null) {
-            this.props.navigation.navigate('Welcome')
-        }
-
         // Print courses
         if (this.props.courses) {
             console.log(this.props.courses.length)
         }
     }
 
-    logout() {
-        this.props.logout()
-    }
-
     render() {
+        let elements = []
+        if (this.props.courses) {
+            elements = this.props.courses.map(function(course) {
+                return <Course course={course}></Course>
+            })
+        }
+
         return (
             <Block margin={[10, 30]}>
-                <Block margin={[0, 0, 50, 0]}>
-                    <Text h1>Hello {this.props.user.name}</Text>
-                </Block>
-
-                <Button onPress={() => this.logout()}>
-                    <Text center>Logout</Text>
-                </Button>
-
+                { elements }
             </Block>
         );
     }
@@ -55,7 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ...bindActionCreators({logout, index}, dispatch)
+        ...bindActionCreators({index}, dispatch)
     }
 }
 
