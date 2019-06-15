@@ -1,22 +1,26 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import { Block, Text, Button, Input } from '../components'
 
-export default class Login extends React.Component {
+import { login } from '../actions/authActions'
+
+class Login extends React.Component {
     state = {
-        username: "john@doe.com",
-        password: "testtest"
+        username: "ghickle@example.com",
+        password: "testtest",
     }
 
-    login() {
-        const {username, password} = this.state
-        const {navigation} = this.props
-
-        // API AUTH
-
-        if (true) {
-            navigation.navigate('Browse')
+    componentDidUpdate() {
+        if (this.props.token) {
+            this.props.navigation.navigate('Browse')
         }
+    }
+
+    attemptLogin() {
+        const {username, password} = this.state
+        this.props.login({username, password})
     }
 
     render() {
@@ -40,11 +44,30 @@ export default class Login extends React.Component {
                 />
     
                 <Block margin={[25, 0]}>
-                    <Button primary onPress={() => this.login()}>
+                    <Button primary onPress={() => this.attemptLogin()}>
                         <Text white center>Login</Text>
                     </Button>
+                </Block>
+
+                <Block margin={[25, 0]}>
+                    <Text center>{this.props.message}</Text>
                 </Block>
             </Block>
           );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.authReducer.token,
+        message: state.authReducer.message,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        ...bindActionCreators({login}, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
